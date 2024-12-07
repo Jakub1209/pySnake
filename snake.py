@@ -6,7 +6,7 @@ starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 class Snake:
 
     def __init__(self):
-        super().__init__()
+        super().__init__()  # TODO: Usunąć
         self.pause = False
         self.snake_step = 20
         self.snake_segments = []

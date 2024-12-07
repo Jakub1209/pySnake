@@ -4,38 +4,12 @@ from scoreboard import Scoreboard
 from snake import Snake
 from food import Food
 import time
-from random import choice
 
 # ---------------------------- CONSTANTS ---------------------------- #
 
 DISTANCE_TO_EAT_FOOD = 18
 
-FOOD_X_AXIS = [num for num in range(-260, 261, 20)]
-FOOD_Y_AXIS = [num for num in range(-260, 221, 20)]
-
-
 # ---------------------------- FUNCTIONS ---------------------------- #
-
-
-def choose_new_food_position():
-    # choose a random x and y number from the lists
-    x_choice = choice(FOOD_X_AXIS)
-    y_choice = choice(FOOD_Y_AXIS)
-    food_pos_tuple = (x_choice, y_choice)
-
-    # make a list of all the current snake segments positions
-    list_of_snake_positions = [snake_segment.pos() for snake_segment in snake.snake_segments]
-    print(list_of_snake_positions)
-    print((x_choice, y_choice))
-
-    # if the chosen position is not in list of snake positions, then spawn food there
-    if food_pos_tuple in list_of_snake_positions:
-        x_choice = choice(FOOD_X_AXIS)
-        y_choice = choice(FOOD_Y_AXIS)
-        print("I chose a new position!")
-
-    new_position = (x_choice, y_choice)
-    return new_position
 
 
 def map_value(value, from_range_min, from_range_max, to_range_min, to_range_max):
@@ -91,7 +65,7 @@ while game_is_on:
         scoreboard.reset_score()
 
     if snake.snake_head.distance(food) < DISTANCE_TO_EAT_FOOD:
-        food.spawn_food(choose_new_food_position())
+        food.spawn_food(snake_segments=snake.snake_segments)
         scoreboard.add_point(int(snake_speed_input))
         snake.add_segment()
 
