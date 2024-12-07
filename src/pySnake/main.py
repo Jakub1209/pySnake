@@ -7,11 +7,6 @@ from pySnake.snake import Snake
 from pySnake.food import Food
 
 
-# ---------------------------- CONSTANTS ---------------------------- #
-
-DISTANCE_TO_EAT_FOOD = 18
-
-
 # ---------------------------- FUNCTIONS ---------------------------- #
 
 
@@ -20,6 +15,8 @@ def map_value(value, from_range_min, from_range_max, to_range_min, to_range_max)
 
 
 class Game:
+    DISTANCE_TO_EAT_FOOD = 18
+
     def __init__(self):
         # initialize the objects needed
         self.scoreboard = Scoreboard()
@@ -75,7 +72,7 @@ class Game:
             self.screen.update()
             self.check_win_or_lose_conditions()
 
-            if self.snake.snake_head.distance(self.food) < DISTANCE_TO_EAT_FOOD:
+            if self.snake.snake_head.distance(self.food) < self.DISTANCE_TO_EAT_FOOD:
                 self.food.spawn_food(snake_segments=self.snake.snake_segments)
                 self.scoreboard.add_point(int(snake_speed_input))
                 self.snake.add_segment()
