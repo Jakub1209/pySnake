@@ -21,6 +21,18 @@ def pause_screen():
     scoreboard.pause_info(snake.pause)
 
 
+def check_win_or_lose_conditions():
+    loose_condition = snake.snake_head.xcor() > 280 \
+                      or snake.snake_head.xcor() < -280 \
+                      or snake.snake_head.ycor() > 280 \
+                      or snake.snake_head.ycor() < -280 \
+                      or snake.has_bitten_itself()
+
+    if loose_condition:
+        snake.reset_snake()
+        scoreboard.reset_score()
+
+
 # initialize the objects needed
 scoreboard = Scoreboard()
 snake = Snake()
@@ -57,12 +69,7 @@ while game_is_on:
 
     time.sleep(snake_speed)
     screen.update()
-
-    if (snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or
-            snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280 or
-            snake.has_bitten_itself()):
-        snake.reset_snake()
-        scoreboard.reset_score()
+    check_win_or_lose_conditions()
 
     if snake.snake_head.distance(food) < DISTANCE_TO_EAT_FOOD:
         food.spawn_food(snake_segments=snake.snake_segments)
