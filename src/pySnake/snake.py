@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-starting_positions = [(0, 0), (-20, 0), (-40, 0)]
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
 
 class Snake:
@@ -13,7 +13,7 @@ class Snake:
         self.snake_head = self.snake_segments[0]
 
     def create_snake(self):
-        for _ in starting_positions:
+        for _ in STARTING_POSITIONS:
             self.add_segment()
 
     def add_segment(self):

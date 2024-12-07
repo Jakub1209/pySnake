@@ -1,8 +1,5 @@
 from turtle import Turtle
 from random import choice
-from typing import Optional
-
-from typing import List
 
 FOOD_X_AXIS = [num for num in range(-260, 261, 20)]
 FOOD_Y_AXIS = [num for num in range(-260, 221, 20)]

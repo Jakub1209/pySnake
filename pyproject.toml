@@ -1,0 +1,24 @@
+[project]
+name = "pySnake"
+version = "0.0.0"
+
+dependencies = [
+    "pandas"
+]
+
+description = "Happy Snake?"
+readme = "readme.md"
+requires-python = ">=3.8"
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+pySnake = "pySnake.__main__:run"
+
+[tool.pytest.ini_options]
+python_files = "test_*.py"
+testpaths = ["tests"]
